@@ -1,0 +1,314 @@
+/*Estilo de index*/
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --success: #10b981;
+            --card-bg: #1e293b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);/*color de fondo de la pagina*/
+            color: var(--text);/*color de texto*/
+            line-height: 1.6;/*distanci entre las letras*/
+        }
+
+        body::before {
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),/*color de fondo del lado izquierdo de forma gradiente*/
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);/*color de fondo del lado derecho de forma gradiente*/
+        }
+
+        .container {
+            max-width: 1200px;/*hace que ocupe todo el ancho de la pagina*/
+            margin: 0 auto;
+            padding: 0 20px;/*distancia de los costados del contenido*/
+        }
+
+        /* Header  */
+        header {
+            background: rgba(30, 41, 59, 0.8);/*color de fondo del header*/
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);/*color de la linea que separa al header del body*/
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;/*centra la barra de nav*/
+            padding: 1.5rem 0;/*distancia de los lados*/
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;/*aumenta el tamaño del logo*/
+            color: var(--text);
+            text-decoration: none;/*quita el subrayado*/
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;/*le da un resalto al logo despacio*/
+        }
+
+        .logo:hover {
+            transform: scale(1.05);/*el efecto de que resalte el logo*/
+        }
+
+        .logo-highlight {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);/*color a las letras del nav de header*/
+        }
+
+        /* Hero Section */
+        /*es la parte del inicio*/
+        .hero {
+            text-align: center;
+            padding: 5rem 0 4rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5rem;/*tamaño del titulo*/
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0 4rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid rgba(247, 5, 5, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            animation: cardFadeIn 0.6s ease-out backwards;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes cardFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card::before {
+            content: '';/*genera un elemento invisible*/
+            position: absolute;/*que cubre toda la tarjeta*/
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;/*linea delgada*/
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            transform: scaleX(0);
+            transform-origin: left;/*la animacion crecera desde la izquierda*/
+            transition: transform 0.4s ease;
+        }
+        /*efecto cuando pasas el mouse sobre la tarjeta*/
+        .card:hover {
+            transform: translateY(-10px);/*eleva la tarjeta 10 pixeleshacia arriba*/
+            border-color: rgba(99, 102, 241, 0.3);/*borde azul, morado semitransparente*/
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);/*crea um efecto de profundida con sombra difuminada*/
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);/*efecto en la imagen de linea animada*/
+        }
+
+        .card-image {
+            width: 100%;/*img ocupa todo el ancho del contenedor*/
+            height: 250px;
+            object-fit: cover;/*recorta la imagen para llenar el espacio sin distorcion*/
+            transition: transform 0.4s ease;/*animacion suave al hacer hover*/
+        }
+
+        .card:hover .card-image {
+            transform: scale(1.1);/*aumenta la imagen un 10% al pasar el mouse*/
+        }
+
+        .card-content {
+            padding: 2rem;/*expacio interno de 2rem en todo los lados del texto */
+        }
+
+        .card-title {
+            font-family: 'Poppins', sans-serif;/*fuente moderna para los titulo*/
+            font-size: 1.5rem;
+            font-weight: 700;/*texto en negrita*/
+            margin-bottom: 1rem;
+            color: var(--text);/*variable para dar color al texto*/
+        }
+
+        .card-text {
+            color: var(--text-muted);/*color de texto*/
+            margin-bottom: 1.5rem;
+            line-height: 1.7;/*espacio entre lineas*/
+        }
+
+        .btn {
+            display: inline-block;/*para que el boton se comporte como elemento en linea */
+            padding: 0.8rem 2rem;/*espacio interno del boton*/
+            background: linear-gradient(135deg, var(--dark), var(--secondary));/*gradien de fondo del boton*/
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;/*bordes redondeados*/
+            font-weight: 600;/*da grosor a la letra del boton*/
+            transition: all 0.3s ease;
+            position: relative;/*para posicionar el pseudo-elemento si se quita se ve rara la pagina*/
+            overflow: hidden;/*oculta el contenido que se desborde*/
+        }
+
+        .btn::before {
+            content: '';/*genera un elemento invisible*/
+            position: absolute;
+            top: 0;
+            left: -100%;/*inicia fuera del boton, a la derecha el efecto*/
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);/*color del efecto*/
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;/*se mueve completamente hacia la derecha el destello*/
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);/*eleva el boton 2 pixeles hacia arriba*/
+            box-shadow: 0 10px 25px rgba(94, 146, 241, 0.4);/*color del sombreado del boton*/
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 23, 42, 0.95);/*color de fondo del*/
+            border-top: 1px solid rgba(255, 255, 255, 0.1);/*color de la linea delgada que se ve que separa el body del footer*/
+            padding: 3rem 0 1.5rem;/*distancia del texto de la parte superior*/
+            margin-top: 4rem;/*margen de 4rem*/
+        }
+
+        .footer-content {
+            display: grid;/*crea un layout de cuadricula flexible*/
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));/*ajusta el numero de columna, cada columna tiene un min de 250px y max 1 fraccion de espacio disponible*/
+            gap: 2rem;/*espacio entre columnas*/
+            margin-bottom: 2rem;/*separacion inferior*/
+        }
+
+        .footer-section h3 {
+            font-family: 'Poppins', sans-serif;/*estilo de letra*/
+            color: var(--text);/*color de texto*/
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--text-muted);/*color del texto*/
+            text-decoration: none;/*quita el subrayado*/
+            display: block;/*hace que los enlaces esten en bloque,uno tras otro*/
+            margin-bottom: 0.5rem;/*distancia entre los botones de nav*/
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);/*es el que hace el cambio de color al acercar el mouse a los votones de nav*/
+        }
+
+        .copyright {
+            text-align: center;/*centro*/
+            padding-top: 2rem;/*distancia de 2rem de la parte superior*/
+            border-top: 1px solid rgba(255, 255, 255, 0.1);/*color de la linea que lo separa del footer*/
+            color: var(--text-muted);/*color de la letra*/
+            font-size: 0.9rem;/*disminuyo el tamaño de la letra*/
+        }
+
+        /* Responsive *//*para que se pueda ver en los diferentes tipos de pantalla*/
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;/*reduce el tamaño del titulo principal del h1 a 2.5 rem para pantallas mas pequeñas*/
+            }
+
+            .hero p {
+                font-size: 1.1rem;/*ajusta el tamaño del parrafo a 1.1rem para mejor legibilidad en moviles*/
+            }
+
+            .nav-links {
+                gap: 1rem;/*reduce el espacio entre enlaces de navegacion a 1rem para optimizar el espacio*/
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;/*cambia el grid a una sola columna en pantallas pequeñas, verticalmente*/
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+

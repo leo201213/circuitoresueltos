@@ -1,0 +1,353 @@
+
+ * {  /*Limpia y resetea todo para empezar desde cero*/
+    margin: 0; /*elimina el margen externo por defecto de los navegadores*/
+    padding: 0; /*elimina el relleno por defecto,el espacio entre el contenido y y el borde del elemento*/
+    box-sizing: border-box; /*Cambia cómo se calculan el ancho y alto de los elementos, se nota en los espacios, en la parte de abajo*/
+        }
+
+    :root { /*aqui estan los colores de toda la pagina*/
+        --primary: #6366f1; /*da color al titulo RESUELTOS*/
+        --secondary: #8b5cf6; /*da color a lo mismo*/
+        --text: #fff; /*da color al texto de los cuadros de abajo*/
+        --tex-muted: #94a3b8; /*color del texto*/
+        --card-bg: #1e293b; /*da color a los cuadros,a su fondo*/
+
+    }
+
+    body { /*el cuerpo de la pagina*/
+        font-family: 'Arial', sans-serif;/*tipografia de tdo el texto*/
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); /*Un fondo que va de oscuro a un poco menos oscuro,de arriba-izquierda a abajo-derecha*/
+        color: var(--text); /*da el coloral texto de todo el body*/
+
+    }
+
+  .container {
+         max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px; 
+         
+        
+
+    }
+
+    /*estilo HEADER*/
+    header { /*encabezado*/
+        background: rgba(30, 41, 59, 0.8);/*da el color de fondo con transparencia*/
+        backdrop-filter: blur(10px); /*ayuda a que el header se vea mejor, mas nitido*/
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /*linea inferior en la parte del header*/
+        position: sticky; /*ayuda a que el header se quede quieto mientras el usuario baja*/
+        top: 0; /*para que funcione el sticky*/
+        z-index: 100; /*asegura que el header esté sobre otros elementos*/
+
+    }
+
+    /*barra de navegacion*/
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1,5rem 0;
+    }
+
+
+    .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--text);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: transform 0.3s ease;
+
+    }
+
+    .logo:hover {
+        transform: scale(1.05); /*da movimiento al logo*/
+
+    }
+
+    .logo-highlight {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 500;
+        position: relative;
+        transition: color 0.3s ease;
+
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        transition: width 0.3 ease;
+    }
+
+    .nav-links a:hover {
+        color: var(--primary);
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+    .hero-about {
+        position: relative;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        overflow: hidden;
+        margin-top: 2rem;
+        border-radius: 20px;
+
+    }
+
+    .hero-about::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('../img/imgns.jpg') center/cover no-repeat;
+    }
+
+    .hero-about::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 1;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        padding: 3rem;
+    }
+
+    .hero-about h1 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        color: white;
+        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-about .subtitle {
+        font-size: 1.3rem;
+        color: rgba(255, 255, 255, 0.9);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+      .about-section {
+            padding: 4rem 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center; 
+            margin-top: 3rem;
+        }
+
+        .about-text {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .about-text h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .about-image {
+            position: relative;
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Mission Cards */
+        .mission-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .mission-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            animation: cardFadeIn 0.6s ease-out backwards;
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .mission-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+          .mission-card h3 {  /*ayuda a los contenendores de abajo esteticamente*/
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .mission-card p { /*ayua a ls contenedores de abajo con sus espacios*/
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 4rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 23, 42, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+                @media (max-width: 768px) { /*ayuda a la imagen para mover el ordenador al lado del tex*/
+             .hero-about h1 { /*le da orden al texto sobre nosotros y lo que pone abajo*/
+                font-size: 2.5rem; /*el espcio vy tamaño*/ 
+            }
+
+            .about-content { /*para que la segunda imagen se vea bien en movil*/
+                grid-template-columns: 1fr; /*manda la imagen a una columna sola*/
+            }
+           
+
+        }
+            
+        
+    
