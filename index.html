@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circuitos Resueltos - Tips y Consejos Tecnológicos</title>
+    <meta name="description" content="Descubre los mejores tips sobre hardware, software y consejos tecnológicos. Aprende sobre circuitos y tecnología de forma práctica.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css index/estilo.css">
+    <link rel="stylesheet" href="css sotfware/estilo3.css">
+    <link rel="stylesheet" href="css hardware/estilo4.css">
+    <link rel="stylesheet" href="css nosotros/estilo.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    Circuitos<span class="logo-highlight">Resueltos</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Tips y Consejos Tecnológicos</h1>
+                <p>Descubre los mejores recursos sobre hardware, software y consejos prácticos para dominar la tecnología</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="cards-grid">
+                <article class="card">
+                    <img src="img/hardware.jpeg" alt="Componentes de hardware" class="card-image">
+                    <div class="card-content">
+                        <h2 class="card-title">HARDWARE</h2>
+                        <p class="card-text">
+                            El hardware se refiere a los componentes físicos de un sistema informático que se puede ver y tocar. Incluye la placa base, memorias RAM y ROM, procesadores, tarjetas gráficas y todos los periféricos que conforman tu computadora.
+                        </p>
+                        <a href="hardware.html" class="btn">Explorar Hardware</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="img/software.jpeg" alt="Software y programación" class="card-image">
+                    <div class="card-content">
+                        <h2 class="card-title">SOFTWARE</h2>
+                        <p class="card-text">
+                            El software es el conjunto intangible de programas e instrucciones que guían a un dispositivo para ejecutar tareas específicas. Es el "cerebro" lógico que permite la interacción, edición, navegación y entretenimiento digital.
+                        </p>
+                        <a href="software.html" class="btn">Explorar Software</a>
+                    </div>
+                </article>
+            </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Circuitos Resueltos</h3>
+                    <p>Tu fuente confiable de información tecnológica, tips y consejos prácticos sobre hardware y software.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navegación</h3>
+                    <a href="index.html">Inicio</a>
+                    <a href="nosotros.html">Nosotros</a>
+                    <a href="hardware.html">Hardware</a>
+                    <a href="software.html">Software</a>
+                </div>
+            </div>
+            <p class="copyright">© 2025 Circuitos Resueltos - Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
